@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAND SYMPHONY</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="dropOverlay">[ DROP AUDIO FILE ]</div>
+
+<div id="overlay">
+  <h2>HAND SYMPHONY</h2>
+  <p class="sub">손의 제스처로 음악을 지휘하세요<br>
+  MP3·WAV·OGG 파일을 드래그하거나 업로드하여 원하는 음악을 재생할 수 있습니다</p>
+  <div id="errMsg"></div>
+  <button id="startBtn">[ INITIALIZE ]</button>
+  <p class="sub" style="font-size:9px;opacity:.35">카메라 권한 허용 필요</p>
+</div>
+
+<div id="scoreBoard">
+  <span>✌️ <span id="vScore">0</span></span>
+  <span style="color:rgba(0,255,200,0.3);margin:0 10px;">|</span>
+  <span>💎 <span id="dScore">0</span></span>
+</div>
+
+<video id="video" playsinline muted></video>
+<canvas id="bgCanvas"></canvas>
+<canvas id="effectCanvas"></canvas>
+<canvas id="asciiCanvas"></canvas>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<div class="frame"></div>
+
+<div id="title">
+  <h1>HAND SYMPHONY</h1>
+  <p>[ GESTURE_INPUT :: ACTIVE ]</p>
+</div>
+
+<div id="hud">
+  <div class="metric" id="m-spread"><div class="metric-val" id="v-spread">000%</div><div class="metric-lbl">SPREAD</div></div>
+  <div class="metric" id="m-vel"><div class="metric-val" id="v-vel">0.000</div><div class="metric-lbl">VELOCITY</div></div>
+  <div class="metric" id="m-note"><div class="metric-val" id="v-note">——</div><div class="metric-lbl">CHORD</div></div>
+</div>
+
+<div id="musicBar">
+  <span id="trackName">SYNTH MODE</span>
+  <div id="progressWrap">
+    <input type="range" id="progressBar" min="0" max="1" step="0.001" value="0">
+    <span id="timeDisp">0:00</span>
+  </div>
+  <div id="volWrap">
+    <span style="font-size:9px;color:rgba(0,255,200,.6);">VOL</span>
+    <input type="range" id="volBar" min="0" max="1" step="0.01" value="0.9">
+  </div>
+  <button class="mBtn" id="pauseBtn">⏸</button>
+  <button class="mBtn" id="prevBtn">⏮</button>
+  <button class="mBtn" id="nextBtn">⏭</button>
+  <button class="mBtn" id="synthBtn">♪ SYNTH</button>
+  <button class="mBtn" id="uploadBtn">
+    ♫ UPLOAD
+    <input type="file" id="fileInput" accept="audio/*" multiple>
+  </button>
+</div>
+
+<div id="filterBar">
+  <button class="fBtn on" data-filter="ascii">[ ASCII ]</button>
+  <button class="fBtn" data-filter="edge">[ EDGE ]</button>
+  <button class="fBtn" data-filter="thermal">[ THERMAL ]</button>
+  <button class="fBtn" data-filter="glitch">[ GLITCH ]</button>
+  <button class="fBtn" data-filter="normal">[ NORMAL ]</button>
+</div>
+
+<div id="statusMsg">[ AWAITING GESTURE INPUT ]</div>
+
+<script src="script.js"></script>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
